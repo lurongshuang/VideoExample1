@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/rlwin"
+        android:layout_width="match_parent"
+        android:background="@color/color313133"
+        android:layout_height="@dimen/dp_200">
+        <com.lrs.videobyl.view.LrsPlayView
+            android:id="@+id/lrsview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <Button
+        android:id="@+id/btmp4"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:text="Mp4点播"
+        />
+    <Button
+        android:id="@+id/btm3u8"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="M3u8直播 CCTV直播"
+        />
+
+    <Button
+        android:id="@+id/btlj"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="随机添加一种滤镜"
+        />
+
+    <Button
+        android:id="@+id/btbs"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="变速"
+        />
+</LinearLayout>
