@@ -464,11 +464,13 @@ public class LrsPlayView extends FrameLayout implements baseView.VideoViewTouchL
 
     @Override
     public void ViewonClick(View view) {
+        if(playInterface!=null)
         playInterface.ViewonClick(view);
     }
     @Override
     public void ViewonTouch(View v, MotionEvent event) {
-        playInterface.ViewonTouch(v,event);
+        if(playInterface!=null)
+            playInterface.ViewonTouch(v,event);
     }
 
 
@@ -759,7 +761,7 @@ public class LrsPlayView extends FrameLayout implements baseView.VideoViewTouchL
 
     @Override
     public void onBufferingUpdate(int percent) {
-        if(playInterface!=null) 
+        if(playInterface!=null)
             playInterface.onBufferingUpdate(percent);
     }
 
