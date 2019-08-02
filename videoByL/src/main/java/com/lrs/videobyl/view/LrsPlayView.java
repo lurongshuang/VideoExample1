@@ -735,11 +735,14 @@ public class LrsPlayView extends FrameLayout implements baseView.VideoViewTouchL
 
     @Override
     public void onProgress(int progress, int secProgress, int currentPosition, int duration) {
-        playInterface.onVideoPlayListener(progress,secProgress,currentPosition,duration);
+        if(playInterface!=null){
+            playInterface.onVideoPlayListener(progress,secProgress,currentPosition,duration);
+        }
     }
 
     @Override
     public void onPrepared() {
+        if(playInterface!=null)
         playInterface.onVideoStart();
     }
 
@@ -750,51 +753,61 @@ public class LrsPlayView extends FrameLayout implements baseView.VideoViewTouchL
 
     @Override
     public void onCompletion() {
+        if(playInterface!=null)
         playInterface.onVideoCompletion();
     }
 
     @Override
     public void onBufferingUpdate(int percent) {
-    playInterface.onBufferingUpdate(percent);
+        if(playInterface!=null) 
+            playInterface.onBufferingUpdate(percent);
     }
 
     @Override
     public void onSeekComplete() {
+        if(playInterface!=null)
         playInterface.onSeekComplete();
     }
 
     @Override
     public void onError(int what, int extra) {
+        if(playInterface!=null)
         playInterface.onVideoError(what,extra);
 
     }
 
     @Override
     public void onInfo(int what, int extra) {
+        if(playInterface!=null)
         playInterface.onInfo(what,extra);
     }
 
     @Override
     public void onVideoSizeChanged() {
+        if(playInterface!=null)
         playInterface.onVideoSizeChanged();
     }
 
     @Override
     public void onBackFullscreen() {
+        if(playInterface!=null)
         playInterface.onBackFullscreen();
     }
 
     @Override
     public void onVideoPause() {
+        if(playInterface!=null)
         playInterface.onVideoPause();
     }
 
     @Override
     public void onVideoResume() {
+        if(playInterface!=null)
         playInterface.onVideoResume();
     }
     @Override
     public void onVideoResume(boolean seek) {
+        if(playInterface!=null)
         playInterface.onVideoResume(seek);
     }
 }
