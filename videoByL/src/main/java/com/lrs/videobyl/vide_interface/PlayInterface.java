@@ -8,11 +8,17 @@ import android.view.View;
  */
 public interface PlayInterface {
        //开始播放
-       void onVideoStart();
+//       void onVideoStart();
+       //开始加载
+       void onStartPrepared();
+       //加载完成
+       void onPrepared();
        //播放暂停
        void onVideoPause();
+       //继续播放
+       void onVideoResume();
        //播放停止
-       void onVideoStop();
+//       void onVideoStop();
        //播放完成
        void onVideoCompletion();
        //播放进度
@@ -25,23 +31,8 @@ public interface PlayInterface {
        void onVideoPlayListener(int progress, int secProgress, int currentPosition, int duration);
        //播放出现问题
        void onVideoError(int what, int extra);
-       //信息
-       void  onInfo(int what, int extra);
-
        //视图点击传递
        void ViewonClick(View view);
        //视图 滑动传递
        void ViewonTouch(View v, MotionEvent event);
-       //缓冲
-       void onBufferingUpdate(int percent);
-       //滑动完成
-       void onSeekComplete();
-       //大小变动
-       void onVideoSizeChanged();
-       //翻转
-       void onBackFullscreen();
-       //恢复暂停状态
-       void onVideoResume();
-       //恢复暂停状态
-       void onVideoResume(boolean seek) ;
 }
