@@ -56,8 +56,8 @@ public class LrsPlayView extends FrameLayout implements baseView.VideoViewTouchL
         video_player.setGSYVideoProgressListener(this);
         //点击滑动事件过渡
         video_player.setVideoViewTouchListening(this);
-        //播放器生命周期过渡
-        video_player.setGSYVideoProgressListener(this);
+        //播放器生命周期过渡   GSYMediaPlayerListener
+        manager.setListener(this);
         manager = GSYVideoManager.instance();
     }
 
@@ -130,8 +130,8 @@ public class LrsPlayView extends FrameLayout implements baseView.VideoViewTouchL
     }
     public  void release(){
         if (video_player != null) {
-            manager.releaseMediaPlayer();
             video_player.release();
+            manager.releaseMediaPlayer();
         }
     }
     public  void resume(boolean seek){
@@ -141,7 +141,7 @@ public class LrsPlayView extends FrameLayout implements baseView.VideoViewTouchL
     }
     public  void  pause(){
         if (video_player != null) {
-            manager.pause();
+            video_player.onVideoPause();
         }
     }
 

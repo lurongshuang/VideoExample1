@@ -23,7 +23,7 @@ import com.shuyu.gsyvideoplayer.video.base.GSYVideoViewBridge;
 import java.io.File;
 import java.util.Map;
 
-public class LrsPlayView extends FrameLayout implements baseView.VideoViewTouchListening ,GSYVideoProgressListener, GSYMediaPlayerListener {
+public class LrsPlayView extends FrameLayout implements baseView.VideoViewTouchListening ,GSYVideoProgressListener,  VideoAllCallBack  {
 
     private baseView video_player;
     private GSYVideoManager manager;
@@ -56,9 +56,9 @@ public class LrsPlayView extends FrameLayout implements baseView.VideoViewTouchL
         video_player.setGSYVideoProgressListener(this);
         //点击滑动事件过渡
         video_player.setVideoViewTouchListening(this);
-        //播放器生命周期过渡
-        video_player.setGSYVideoProgressListener(this);
         manager = GSYVideoManager.instance();
+        //播放器生命周期过渡
+        video_player.setVideoAllCallBack(this);
     }
 
     /**
@@ -742,74 +742,126 @@ public class LrsPlayView extends FrameLayout implements baseView.VideoViewTouchL
         }
     }
 
+
+
     @Override
-    public void onPrepared() {
-        if(playInterface!=null)
-        playInterface.onVideoStart();
+    public void onStartPrepared(String url, Object... objects) {
     }
 
     @Override
-    public void onAutoCompletion() {
-//        playInterface.onVideoCompletion();
+    public void onPrepared(String url, Object... objects) {
+        //开始播放
+        if(playInterface!=null){
+            playInterface.onVideoStart();
+        }
     }
 
     @Override
-    public void onCompletion() {
-        if(playInterface!=null)
-        playInterface.onVideoCompletion();
+    public void onClickStartIcon(String url, Object... objects) {
     }
 
     @Override
-    public void onBufferingUpdate(int percent) {
-        if(playInterface!=null)
-            playInterface.onBufferingUpdate(percent);
+    public void onClickStartError(String url, Object... objects) {
     }
 
     @Override
-    public void onSeekComplete() {
-        if(playInterface!=null)
-        playInterface.onSeekComplete();
+    public void onClickStop(String url, Object... objects) {
+        if(playInterface!=null) {
+            playInterface.onVideoPause();
+        }
     }
 
     @Override
-    public void onError(int what, int extra) {
-        if(playInterface!=null)
-        playInterface.onVideoError(what,extra);
+    public void onClickStopFullscreen(String url, Object... objects) {
+        if(playInterface!=null) {
+            playInterface.onVideoPause();
+        }
+    }
+
+    @Override
+    public void onClickResume(String url, Object... objects) {
+        if(playInterface!=null) {
+            playInterface.onVideoResume();
+        }
+    }
+
+    @Override
+    public void onClickResumeFullscreen(String url, Object... objects) {
+        if(playInterface!=null) {
+            playInterface.onVideoResume();
+        }
+    }
+
+    @Override
+    public void onClickSeekbar(String url, Object... objects) {
 
     }
 
     @Override
-    public void onInfo(int what, int extra) {
-        if(playInterface!=null)
-        playInterface.onInfo(what,extra);
+    public void onClickSeekbarFullscreen(String url, Object... objects) {
+
     }
 
     @Override
-    public void onVideoSizeChanged() {
-        if(playInterface!=null)
-        playInterface.onVideoSizeChanged();
+    public void onAutoComplete(String url, Object... objects) {
+        if(playInterface!=null) {
+            playInterface.onVideoCompletion();
+        }
     }
 
     @Override
-    public void onBackFullscreen() {
-        if(playInterface!=null)
-        playInterface.onBackFullscreen();
+    public void onEnterFullscreen(String url, Object... objects) {
+
     }
 
     @Override
-    public void onVideoPause() {
-        if(playInterface!=null)
-        playInterface.onVideoPause();
+    public void onQuitFullscreen(String url, Object... objects) {
+
     }
 
     @Override
-    public void onVideoResume() {
-        if(playInterface!=null)
-        playInterface.onVideoResume();
+    public void onQuitSmallWidget(String url, Object... objects) {
+
     }
+
     @Override
-    public void onVideoResume(boolean seek) {
-        if(playInterface!=null)
-        playInterface.onVideoResume(seek);
+    public void onEnterSmallWidget(String url, Object... objects) {
+
+    }
+
+    @Override
+    public void onTouchScreenSeekVolume(String url, Object... objects) {
+
+    }
+
+    @Override
+    public void onTouchScreenSeekPosition(String url, Object... objects) {
+
+    }
+
+    @Override
+    public void onTouchScreenSeekLight(String url, Object... objects) {
+
+    }
+
+    @Override
+    public void onPlayError(String url, Object... objects) {
+        if(playInterface!=null) {
+            playInterface.onVideoError(-1,-1);
+        }
+    }
+
+    @Override
+    public void onClickStartThumb(String url, Object... objects) {
+    }
+
+    @Override
+    public void onClickBlank(String url, Object... objects) {
+
+    }
+
+    @Override
+    public void onClickBlankFullscreen(String url, Object... objects) {
+
     }
 }
